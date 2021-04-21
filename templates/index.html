@@ -3,25 +3,65 @@
     <head>
         <meta charset="UTF-8">
         <title>mal op quiz</title>
+
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="{{ url_for("static", filename="switch.css") }}">
+        <link rel="stylesheet" href="{{ url_for("static", filename="style.css") }}">
     </head>
     <body>
         <div style="text-align: center;">
-            <form action="/play">
+            <form action="/start">
                 <p>
                     <label for="user">mal username</label><br />
-                    <input type="text" name="user" id="user" autofocus>
+                    <input type="text" name="user" id="user" autofocus value="{{ user }}">
                 </p>
+
                 <p>
-                    <span style="vertical-align: center">video</span>
+                    <label for="video">video mode</label>
                     <label class="switch">
-                      <input type="checkbox" name="video">
+                      <input type="checkbox" name="video" id="video">
                       <span class="slider round"></span>
                     </label>
                 </p>
                 <p>
+                    <p>anime status to include</p>
+
+                    <div class="checkboxes">
+                        <label for="s1">currently watching</label>
+                        <label class="switch">
+                          <input type="checkbox" name="s1" id="s1" checked>
+                          <span class="slider round"></span>
+                        </label>
+
+                        <label for="s2">completed</label>
+                        <label class="switch">
+                          <input type="checkbox" name="s2" id="s2" checked>
+                          <span class="slider round"></span>
+                        </label>
+
+                        <label for="s3">on hold</label>
+                        <label class="switch">
+                          <input type="checkbox" name="s3" id="s3">
+                          <span class="slider round"></span>
+                        </label>
+
+                        <label for="s4">dropped</label>
+                        <label class="switch">
+                          <input type="checkbox" name="s4" id="s4">
+                          <span class="slider round"></span>
+                        </label>
+
+                        <label for="s6">plant to watch</label>
+                        <label class="switch">
+                          <input type="checkbox" name="s6" id="s6">
+                          <span class="slider round"></span>
+                        </label>
+                    </div>
+                </p>
+
+                <p>
                     <label for="n">questions</label>
-                    <input type="number" name="n" id="n" value="10" min="1">
+                    <input type="number" name="n" id="n" value="20" min="1">
                 </p>
 
                 <button type="submit">start</button>

@@ -1,0 +1,53 @@
+@font-face {
+  font-family: Poppins;
+  font-weight: normal;
+  src: url(/static/fonts/Poppins-Light.ttf);
+  font-display: swap;
+}
+@font-face {
+  font-family: Poppins;
+  font-weight: bold;
+  src: url(/static/fonts/Poppins-SemiBold.ttf);
+  font-display: swap;
+}
+
+body {
+  background-color: #131516;
+  padding-top: 10px;
+  font-family: 'Poppins', serif;
+  color: white;
+  margin: 0;
+  min-height: 100vh;
+}
+a {
+  color: #3391ff;
+}
+input {
+  background-color: #181a1b;
+  border: 2px solid #736b5e;
+  color: white;
+}
+input[type=number] {
+  width: 4em;
+}
+button {
+  border: none;
+  background-color: #2196F3;
+  border-radius: 12px;
+  padding: 0.5% 1%;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  transition-duration: 0.4s;
+}
+button:hover {
+  background-color: #2196F3;
+  opacity: 0.8;
+  color: white;
+}
+
+.checkboxes {
+  display: inline-block;
+  vertical-align: middle;
+}

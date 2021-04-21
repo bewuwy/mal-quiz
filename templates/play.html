@@ -3,6 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <title>mal op quiz</title>
+
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ url_for("static", filename="style.css") }}">
     </head>
     <body>
         <div style="text-align: center;">
@@ -18,11 +21,16 @@
 
             <details>
                 <summary>answer</summary>
-                <p>{{ animeTitle }} - {{ songTitle }}</p>
+                <p><a href="https://myanimelist.net/anime/{{ anime[1] }}" target="_blank">{{ anime[0] }}</a> - {{ songTitle }}</p>
             </details>
 
             <p>
                 <a href="/play/{{ next }}">next</a>
+            </p>
+
+            <br />
+            <p>
+                <a href="/">quit :c</a>
             </p>
         </div>
     </body>
