@@ -7,13 +7,9 @@
     <body>
         <div style="text-align: center;">
             {% if video %}
-                <video width="auto" height="720" controls autoplay>
-                    <source src="{{ src }}">
-                </video>
+                <iframe src="{{ src }}" height="720" width="1280"></iframe>
             {% else %}
-                <audio controls autoplay>
-                    <source src="{{ src }}">
-                </audio>
+                <iframe src="{{ src }}"></iframe>
             {% endif %}
 
             <details>
