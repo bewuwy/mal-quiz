@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>mal op quiz</title>
+    </head>
+    <body>
+        <div style="text-align: center;">
+            {% if video %}
+                <video width="auto" height="720" controls autoplay>
+                    <source src="{{ src }}">
+                </video>
+            {% else %}
+                <audio controls autoplay>
+                    <source src="{{ src }}">
+                </audio>
+            {% endif %}
+
+            <details>
+                <summary>answer</summary>
+                <p>{{ animeTitle }} - {{ songTitle }}</p>
+            </details>
+
+            <p>
+                <a href="/play/{{ next }}">next</a>
+            </p>
+        </div>
+    </body>
+</html>

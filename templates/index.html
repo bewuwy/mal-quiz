@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>mal op quiz</title>
+        <link rel="stylesheet" href="{{ url_for("static", filename="switch.css") }}">
+    </head>
+    <body>
+        <div style="text-align: center;">
+            <form action="/play">
+                <p>
+                    <label for="user">mal username</label><br />
+                    <input type="text" name="user" id="user" autofocus>
+                </p>
+                <p>
+                    <span style="vertical-align: center">video</span>
+                    <label class="switch">
+                      <input type="checkbox" name="video">
+                      <span class="slider round"></span>
+                    </label>
+                </p>
+                <p>
+                    <label for="n">questions</label>
+                    <input type="number" name="n" id="n" value="10" min="1">
+                </p>
+
+                <button type="submit">start</button>
+            </form>
+        </div>
+    </body>
+</html>
