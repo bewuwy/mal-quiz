@@ -1,4 +1,4 @@
-##mal opening quiz
+## mal opening quiz
 
 yeah, so it's a quiz of anime openings from your **myanimelist.net** account
 
