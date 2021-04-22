@@ -8,8 +8,10 @@
         <link rel="stylesheet" href="{{ url_for("static", filename="style.css") }}">
     </head>
     <body>
+        <script>0</script>
+
         <div style="text-align: center;">
-            <h1><a href="/play/0">Start quiz, {{ user }}</a></h1>
+            <h1><a href="/play/0">Start quiz{% if user %}, {{ user }}{% endif %}</a></h1>
             <p><a href="/"><- go back</a></p>
         </div>
     </body>

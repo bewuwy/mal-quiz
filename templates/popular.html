@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>mal op quiz</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ url_for("static", filename="input.css") }}">
+        <link rel="stylesheet" href="{{ url_for("static", filename="style.css") }}">
+    </head>
+    <body>
+        <script>0</script>
+
+        <div style="text-align: center;">
+            <form action="/start">
+                <p>
+                    <label for="mal">mal mode</label>
+                    <label class="container">
+                        <input type="radio" name="mode" id="mal" value="mal" onclick="window.location='/mal'">
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label for="popular" class="radio-label">popular mode</label>
+                    <label class="container">
+                        <input type="radio" name="mode" id="popular" value="popular" checked>
+                        <span class="checkmark"></span>
+                    </label>
+                </p>
+
+                <strong>there can be spoilers</strong>
+
+                <p>
+                    <label for="video">video mode</label>
+                    <label class="switch">
+                      <input type="checkbox" name="video" id="video">
+                      <span class="slider round"></span>
+                    </label>
+                </p>
+
+                <p>
+                    <p>theme types</p>
+
+                    <div class="checkboxes">
+                        <label for="op">opening</label>
+                        <label class="switch">
+                          <input type="checkbox" name="type" id="op" value="OP" checked>
+                          <span class="slider round"></span>
+                        </label>
+
+                        <label for="ed">ending</label>
+                        <label class="switch">
+                          <input type="checkbox" name="type" id="ed" value="ED">
+                          <span class="slider round"></span>
+                        </label>
+                    </div>
+                </p>
+
+                <p>
+                    <label for="n">questions</label>
+                    <input type="number" name="n" id="n" value="20" min="1" max="70">
+                </p>
+
+                <button type="submit">start</button>
+
+                <input type="hidden" name="mode" value="popular">
+            </form>
+        </div>
+    </body>
+</html>
