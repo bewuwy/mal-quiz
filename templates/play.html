@@ -4,17 +4,41 @@
         <meta charset="UTF-8">
         <title>mal op quiz</title>
 
-         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="{{ url_for("static", filename="style.css") }}">
+
+        <script>
+            function setCookie(name, value) {
+                document.cookie = name + "=" + value + "; path=/; SameSite=Lax";
+            }
+            function getCookie(name) {
+                var nameEQ = name + "=";
+                var ca = document.cookie.split(';');
+                for(var i=0;i < ca.length;i++) {
+                    var c = ca[i];
+                    while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+                }
+                return null;
+            }
+
+            function setVolume() {
+                setCookie("vol", document.getElementById("player").volume);
+            }
+
+            function getVolume() {
+                document.getElementById("player").volume = getCookie("vol");
+            }
+        </script>
     </head>
-    <body>
+    <body onload="getVolume()">
         <div style="text-align: center;">
             {% if video %}
-                <video width="auto" height="720" controls autoplay>
+                <video width="auto" height="720" controls autoplay id="player" onvolumechange="setVolume()">
                     <source src="{{ src }}">
                 </video>
             {% else %}
-                <audio controls autoplay>
+                <audio controls autoplay id="player" onvolumechange="setVolume()">
                     <source src="{{ src }}">
                 </audio>
             {% endif %}
@@ -30,7 +54,7 @@
 
             <br />
             <p>
-                <a href="/">quit :c</a>
+                <a href="/">quit quiz</a>
             </p>
         </div>
     </body>
