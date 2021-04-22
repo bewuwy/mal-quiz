@@ -33,24 +33,32 @@
     </head>
     <body onload="getVolume()">
         <div style="text-align: center;">
+            <h3>question {{ n + 1 }}/{{ qn }}</h3>
+
             {% if video %}
                 <video width="auto" height="720" controls autoplay id="player" onvolumechange="setVolume()">
-                    <source src="{{ src }}">
+                    <source src="{{ theme["mirror"]["mirrorURL"] }}">
                 </video>
             {% else %}
                 <audio controls autoplay id="player" onvolumechange="setVolume()">
-                    <source src="{{ src }}">
+                    <source src="{{ theme["mirror"]["mirrorURL"] }}">
                 </audio>
             {% endif %}
 
             <details>
                 <summary>answer</summary>
-                <p><a href="https://myanimelist.net/anime/{{ anime[1] }}" target="_blank">{{ anime[0] }}</a> - {{ songTitle }}</p>
+                <p><a href="https://myanimelist.net/anime/{{ anime[1] }}" target="_blank">{{ anime[0] }}</a> - {{ theme["themeName"] }} ({{ theme["themeType"] }})</p>
             </details>
 
-            <p>
-                <a href="/play/{{ next }}">next</a>
-            </p>
+            {% if n < qn - 1 %}
+                <p>
+                    <a href="/play/{{ n + 1 }}">next</a>
+                </p>
+            {% else %}
+                <p>
+                    <a href="/finish">finish</a>
+                </p>
+            {% endif %}
 
             <br />
             <p>

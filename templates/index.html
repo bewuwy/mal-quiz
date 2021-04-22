@@ -60,8 +60,26 @@
                 </p>
 
                 <p>
+                    <p>theme types</p>
+
+                    <div class="checkboxes">
+                        <label for="op">opening</label>
+                        <label class="switch">
+                          <input type="checkbox" name="op" id="op" checked>
+                          <span class="slider round"></span>
+                        </label>
+
+                        <label for="ed">ending</label>
+                        <label class="switch">
+                          <input type="checkbox" name="ed" id="ed">
+                          <span class="slider round"></span>
+                        </label>
+                    </div>
+                </p>
+
+                <p>
                     <label for="n">questions</label>
-                    <input type="number" name="n" id="n" value="20" min="1">
+                    <input type="number" name="n" id="n" value="20" min="1" max="2000">
                 </p>
 
                 <button type="submit">start</button>

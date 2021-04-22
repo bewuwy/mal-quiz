@@ -24,23 +24,31 @@ def play():
         return redirect("/")
 
     r = requests.get(f"https://themes.moe/api/mal/{user}")
-    anime_list = r.json()
+    anime_list = list(r.json())
 
-    questions = int(request.args.get("n")) * int(len(anime_list) > int(request.args.get("n")))
+    questions = int(request.args.get("n"))
     themes = []
 
     statuses = []
+    themeTypes = []
     for i in request.args:
         if i.startswith("s"):
             statuses.append(int(i[1]))
+        elif i == "op":
+            themeTypes.append("OP")
+        elif i == "ed":
+            themeTypes.append("ED")
 
-    while len(themes) != questions:
+    while len(themes) != questions and anime_list:
         anime = random.choice(anime_list)
+        anime_list.remove(anime)
 
         th = random.choice(anime["themes"])
-        if anime["watchStatus"] in statuses and th["themeType"].find("OP") > -1\
-                and [th, [anime["name"], anime["malID"]]] not in themes:
-            themes.append([th, [anime["name"], anime["malID"]]])
+        if anime["watchStatus"] in statuses:
+            if "OP" in themeTypes and th["themeType"].find("OP") > -1:
+                themes.append([th, [anime["name"], anime["malID"]]])
+            elif "ED" in themeTypes and th["themeType"].find("ED") > -1:
+                themes.append([th, [anime["name"], anime["malID"]]])
 
     session["themes"] = themes
     session["user"] = user
@@ -62,8 +70,8 @@ def quiz(n):
 
     th = themes[n]
 
-    return render_template("play.html", src=th[0]["mirror"]["mirrorURL"], video=session["options"]["video"],
-                           anime=th[1], songTitle=th[0]["themeName"], next=n+1)
+    return render_template("play.html", video=session["options"]["video"], anime=th[1], theme=th[0], n=n,
+                           qn=len(themes))
 
 
 @app.route("/finish")
