@@ -27,7 +27,13 @@
             }
 
             function getVolume() {
-                document.getElementById("player").volume = getCookie("vol");
+                var vol = getCookie("vol")
+                if (vol == null) {
+                    document.getElementById("player").volume = 1.0;
+                }
+                else {
+                    document.getElementById("player").volume = vol;
+                }
             }
         </script>
     </head>
@@ -53,6 +59,10 @@
             {% if n < qn - 1 %}
                 <p>
                     <a href="/play/{{ n + 1 }}">next</a>
+                {% if n > 0 %}
+                    <br />
+                    <a href="/play/{{ n - 1 }}">prev</a>
+                {% endif %}
                 </p>
             {% else %}
                 <p>

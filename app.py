@@ -29,22 +29,15 @@ def play():
     questions = int(request.args.get("n"))
     themes = []
 
-    statuses = []
-    themeTypes = []
-    for i in request.args:
-        if i.startswith("s"):
-            statuses.append(int(i[1]))
-        elif i == "op":
-            themeTypes.append("OP")
-        elif i == "ed":
-            themeTypes.append("ED")
+    statuses = request.args.to_dict(flat=False)["s"]
+    themeTypes = request.args.to_dict(flat=False)["type"]
 
     while len(themes) != questions and anime_list:
         anime = random.choice(anime_list)
         anime_list.remove(anime)
 
         th = random.choice(anime["themes"])
-        if anime["watchStatus"] in statuses:
+        if str(anime["watchStatus"]) in statuses:
             if "OP" in themeTypes and th["themeType"].find("OP") > -1:
                 themes.append([th, [anime["name"], anime["malID"]]])
             elif "ED" in themeTypes and th["themeType"].find("ED") > -1:
