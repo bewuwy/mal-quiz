@@ -1,0 +1,21 @@
+<h2>anime themes quiz</h2>
+<p>mode</p>
+<p>
+    <label for="mal">myanimelist</label>
+    <label class="container">
+        <input type="radio" name="mode" id="mal" value="mal" onclick="window.location='/mal'" {% if mal %}checked{% endif %}>
+        <span class="checkmark"></span>
+    </label>
+
+    <label for="popular" class="radio-label">popular</label>
+    <label class="container">
+        <input type="radio" name="mode" id="popular" value="popular" onclick="window.location='/popular'" {% if popular %}checked{% endif %}>
+        <span class="checkmark"></span>
+    </label>
+
+    <label for="season" class="radio-label">current season</label>
+    <label class="container">
+        <input type="radio" name="mode" id="season" value="season" onclick="window.location='/season'" {% if season %}checked{% endif %}>
+        <span class="checkmark"></span>
+    </label>
+</p>

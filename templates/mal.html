@@ -1,62 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <title>mal op quiz</title>
-
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% include 'include/head.html' %}
         <link rel="stylesheet" href="{{ url_for("static", filename="input.css") }}">
-        <link rel="stylesheet" href="{{ url_for("static", filename="style.css") }}">
     </head>
     <body>
         <script>0</script>
 
         <div style="text-align: center;">
             <form action="/start">
-                <p>
-                    <label for="mal">mal mode</label>
-                    <label class="container">
-                        <input type="radio" name="mode" id="mal" value="mal" checked>
-                        <span class="checkmark"></span>
-                    </label>
-
-                    <label for="popular" class="radio-label">popular mode</label>
-                    <label class="container">
-                        <input type="radio" name="mode" id="popular" value="popular" onclick="window.location='/popular'">
-                        <span class="checkmark"></span>
-                    </label>
-                </p>
+                {% with mal=True %}
+                    {% include 'include/mode.html' %}
+                {% endwith %}
 
                 <p>
                     <label for="user">mal username</label><br />
                     <input type="text" name="user" id="user" autofocus value="{{ user }}">
                 </p>
 
+                {% include 'include/video_switch.html' %}
+                {% with spoiler=True %}
+                    {% include 'include/note_filter.html' %}
+                {% endwith %}
+
+                <p>animes to include</p>
                 <p>
-                    <label for="video">video mode</label>
-                    <label class="switch">
-                      <input type="checkbox" name="video" id="video">
-                      <span class="slider round"></span>
-                    </label>
-                </p>
-
-                <p>
-                    <label for="spoiler">include spoilers</label>
-                    <label class="switch">
-                        <input type="checkbox" name="spoiler" id="spoiler">
-                        <span class="slider round"></span>
-                    </label>
-
-                    <label for="spoiler">include nsfw</label>
-                    <label class="switch">
-                        <input type="checkbox" name="nsfw" id="spoiler">
-                        <span class="slider round"></span>
-                    </label>
-                </p>
-
-                <p>
-                    <p>animes to include</p>
-
                     <div class="checkboxes">
                         <label for="s1">currently watching</label>
                         <label class="switch">
@@ -82,7 +50,7 @@
                           <span class="slider round"></span>
                         </label>
 
-                        <label for="s6">plant to watch</label>
+                        <label for="s6">plan to watch</label>
                         <label class="switch">
                           <input type="checkbox" name="s" id="s6" value="6">
                           <span class="slider round"></span>
@@ -90,30 +58,7 @@
                     </div>
                 </p>
 
-                <p>
-                    <p>theme types</p>
-
-                    <div class="checkboxes">
-                        <label for="op">opening</label>
-                        <label class="switch">
-                          <input type="checkbox" name="type" id="op" value="OP" checked>
-                          <span class="slider round"></span>
-                        </label>
-
-                        <label for="ed">ending</label>
-                        <label class="switch">
-                          <input type="checkbox" name="type" id="ed" value="ED">
-                          <span class="slider round"></span>
-                        </label>
-                    </div>
-                </p>
-
-                <p>
-                    <label for="n">questions</label>
-                    <input type="number" name="n" id="n" value="20" min="1" max="70">
-                </p>
-
-                <button type="submit">start</button>
+                {% include 'include/theme_types.html' %}
             </form>
         </div>
     </body>

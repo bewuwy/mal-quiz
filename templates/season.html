@@ -9,12 +9,25 @@
 
         <div style="text-align: center;">
             <form action="/start">
-                {% with popular=True %}
+                {% with season=True %}
                     {% include 'include/mode.html' %}
                 {% endwith %}
 
                 {% include 'include/video_switch.html' %}
                 {% include 'include/note_filter.html' %}
+
+                <p>
+                    <p>time frame</p>
+
+                    <label for="time">season</label>
+                    <label class="switch">
+                        <input type="checkbox" name="time" id="time" value="year">
+                        <span class="slider"></span>
+                    </label>
+                    <input type="hidden" name="time" value="season">
+                    <label for="time">year</label>
+                </p>
+
                 {% include 'include/theme_types.html' %}
             </form>
         </div>

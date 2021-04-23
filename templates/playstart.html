@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <title>mal op quiz</title>
-
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="{{ url_for("static", filename="style.css") }}">
+        {% include 'include/head.html' %}
     </head>
     <body>
         <script>0</script>
 
         <div style="text-align: center;">
-            <h1><a href="/play/0">Start quiz{% if user %}, {{ user }}{% endif %}</a></h1>
+            <h2>{{ title }}</h2>
+            <h3><a href="/play/0">Start quiz{% if user %}, {{ user }}{% endif %}</a></h3>
             <p><a href="/"><- go back</a></p>
         </div>
     </body>
