@@ -62,6 +62,14 @@ def play():
         return redirect("/")
     themeTypes = themeTypes["type"]
 
+    spoiler = False
+    if "spoiler" in request.args and request.args.get("spoiler") == "on":
+        spoiler = True
+
+    nsfw = False
+    if "nsfw" in request.args and request.args.get("nsfw") == "on":
+        nsfw = True
+
     while len(themes) != questions and anime_list:
         anime = random.choice(anime_list)
         anime_list.remove(anime)
@@ -69,7 +77,19 @@ def play():
         if mode == "popular" or str(anime["watchStatus"]) in statuses:
             th = random.choice(anime["themes"])
             i = [[th["themeType"], th["themeName"], th["mirror"]["mirrorURL"]],
-                 [anime["name"], anime["malID"]]]
+                 [anime["name"], anime["malID"]], []]
+
+            if th["mirror"]["notes"].lower().find("spoiler") > -1:
+                if not spoiler:
+                    continue
+                else:
+                    i[2].append("spoiler")
+            if th["mirror"]["notes"].lower().find("nsfw") > -1:
+                if not nsfw:
+                    continue
+                else:
+                    i[2].append("nsfw")
+
             if "OP" in themeTypes and th["themeType"].find("OP") > -1:
                 themes.append(i)
             elif "ED" in themeTypes and th["themeType"].find("ED") > -1:
@@ -99,7 +119,7 @@ def quiz(n):
     th = themes[n]
 
     return render_template("play.html", video=session["options"]["video"], anime=th[1], theme=th[0], n=n,
-                           qn=len(themes))
+                           qn=len(themes), warning=th[2])
 
 
 @app.route("/finish")

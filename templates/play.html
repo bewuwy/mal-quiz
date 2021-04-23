@@ -44,13 +44,17 @@
             <h3>question {{ n + 1 }}/{{ qn }}</h3>
 
             {% if video %}
-                <video width="auto" height="720" controls autoplay id="player" onvolumechange="setVolume()">
+                <video style="height: 60vh; width: auto;" controls autoplay id="player" onvolumechange="setVolume()">
                     <source src="{{ theme[2] }}">
                 </video>
             {% else %}
                 <audio controls autoplay id="player" onvolumechange="setVolume()">
                     <source src="{{ theme[2] }}">
                 </audio>
+            {% endif %}
+
+            {% if warning %}
+                <p><strong>{{ ', '.join(warning) }}</strong></p>
             {% endif %}
 
             <details>

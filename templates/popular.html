@@ -27,13 +27,25 @@
                     </label>
                 </p>
 
-                <strong>there can be spoilers</strong>
-
                 <p>
                     <label for="video">video mode</label>
                     <label class="switch">
                       <input type="checkbox" name="video" id="video">
                       <span class="slider round"></span>
+                    </label>
+                </p>
+
+                <p>
+                    <label for="spoiler">include spoilers</label>
+                    <label class="switch">
+                        <input type="checkbox" name="spoiler" id="spoiler">
+                        <span class="slider round"></span>
+                    </label>
+
+                    <label for="spoiler">include nsfw</label>
+                    <label class="switch">
+                        <input type="checkbox" name="nsfw" id="spoiler">
+                        <span class="slider round"></span>
                     </label>
                 </p>
 
@@ -61,8 +73,6 @@
                 </p>
 
                 <button type="submit">start</button>
-
-                <input type="hidden" name="mode" value="popular">
             </form>
         </div>
     </body>
