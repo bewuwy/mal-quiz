@@ -145,8 +145,13 @@ def quiz(n):
 
     th = themes[n]
 
+    audioSrc = ""
+    if not session["options"]["video"]:
+        r = requests.post(f"https://themes.moe/api/themes/{th[1][1]}/{th[0][0]}/audio")
+        audioSrc = r.text
+
     return render_template("play.html", video=session["options"]["video"], anime=th[1], theme=th[0], n=n,
-                           qn=len(themes), warning=th[2], title=session["title"])
+                           qn=len(themes), warning=th[2], title=session["title"], audioSrc=audioSrc)
 
 
 @app.route("/finish")
